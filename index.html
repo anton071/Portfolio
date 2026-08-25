@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Antonio Mangampo — web and software developer portfolio.">
+<title>Antonio Mangampo — Developer / Builder</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;700;800&display=swap');
+
+:root{
+  --paper:#eeeae2; --ink:#11110f; --muted:#6f6d67; --orange:#ff5a36;
+  --cream:#f8f5ef; --dark:#151513; --line:rgba(17,17,15,.14);
+  --max:1220px; --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:Manrope,system-ui,sans-serif;line-height:1.55;overflow-x:hidden}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:999;
+  opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+a{color:inherit;text-decoration:none}
+.container{width:min(var(--max),calc(100% - 48px));margin:auto}
+.mono{font:500 10px/1.4 "DM Mono",monospace;text-transform:uppercase;letter-spacing:.14em}
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0}
+.nav{
+  height:58px;border:1px solid rgba(255,255,255,.15);background:rgba(17,17,15,.92);
+  color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 17px 0 20px;
+  box-shadow:0 12px 35px rgba(0,0,0,.12);backdrop-filter:blur(16px)
+}
+.brand{font-weight:800;letter-spacing:-.04em}.brand b{color:var(--orange)}
+.nav-links{display:flex;align-items:center;gap:25px;list-style:none}
+.nav-links a{font-size:12px;color:#aaa;transition:.25s}.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-links .contact{color:#111;background:var(--orange);padding:9px 14px;font-weight:800}
+.menu{display:none;background:none;border:0;color:white;font-size:23px}
+
+/* HERO */
+.hero{min-height:100vh;padding:150px 0 80px;display:flex;align-items:center;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:1.45fr .55fr;gap:60px;align-items:end}
+.kicker{display:flex;align-items:center;gap:9px;color:var(--orange);margin-bottom:25px}
+.kicker i{width:7px;height:7px;border-radius:50%;background:var(--orange);box-shadow:0 0 15px rgba(255,90,54,.6)}
+h1{font-size:clamp(58px,9vw,124px);line-height:.87;letter-spacing:-.085em;font-weight:800;max-width:1000px}
+h1 span{display:block;color:var(--orange);font-style:italic}
+.hero-copy{max-width:620px;margin-top:31px;color:#585650;font-size:16px;line-height:1.9}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--ink);padding:12px 17px;font-size:12px;font-weight:800;transition:.3s var(--ease)}
+.btn.primary{background:var(--ink);color:#fff}.btn:hover{transform:translateY(-4px);box-shadow:7px 7px 0 var(--orange)}
+.hero-note{border-left:1px solid var(--ink);padding-left:25px}
+.hero-note .mono{color:#77736b}
+.hero-note strong{display:block;font-size:42px;letter-spacing:-.06em;line-height:1;margin:14px 0}
+.hero-note p{font-size:12px;color:var(--muted);line-height:1.8}
+.availability{display:flex;align-items:center;gap:8px;margin-top:25px;font-size:11px;font-weight:700}
+.availability i{width:8px;height:8px;border-radius:50%;background:#39a96b;box-shadow:0 0 0 5px rgba(57,169,107,.12)}
+
+/* MARQUEE */
+.marquee{background:var(--ink);color:#fff;overflow:hidden;border-bottom:1px solid var(--ink)}
+.marquee-track{width:max-content;display:flex;animation:marquee 24s linear infinite}
+.marquee span{font:500 12px "DM Mono",monospace;text-transform:uppercase;letter-spacing:.16em;padding:19px 28px;white-space:nowrap}
+.marquee b{color:var(--orange);font-weight:500}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+section{padding:120px 0}
+.section-top{display:grid;grid-template-columns:.5fr 1.5fr;gap:30px;margin-bottom:55px}
+.label{color:var(--orange)}
+h2{font-size:clamp(38px,5.5vw,72px);line-height:.94;letter-spacing:-.065em}
+.section-desc{max-width:560px;color:var(--muted);font-size:14px;line-height:1.9;margin-top:18px}
+
+/* PROJECTS */
+.projects{display:grid;gap:26px}
+.project{
+  display:grid;grid-template-columns:1.12fr .88fr;min-height:550px;background:var(--cream);
+  border:1px solid var(--line);position:relative;overflow:hidden;transition:.5s var(--ease)
+}
+.project:nth-child(even){grid-template-columns:.88fr 1.12fr}
+.project:nth-child(even) .media{order:2}.project:nth-child(even) .details{order:1}
+.project:hover{transform:translateY(-8px);box-shadow:18px 24px 0 rgba(17,17,15,.1)}
+.media{position:relative;min-height:550px;padding:25px;background:#ddd8cf;overflow:hidden}
+.media:after{content:"VIEW / SOURCE";position:absolute;top:25px;right:25px;background:var(--orange);padding:8px 10px;font:500 9px "DM Mono";opacity:0;transform:translateY(-10px);transition:.4s}
+.project:hover .media:after{opacity:1;transform:none}
+.media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease);box-shadow:0 20px 45px rgba(0,0,0,.18)}
+.media.xo img{object-fit:contain;background:#0d0f43}
+.project:hover .media img{transform:scale(1.045)}
+.details{padding:55px;display:flex;flex-direction:column;justify-content:center}
+.project-no{color:#88847c;margin-bottom:50px}
+.details h3{font-size:clamp(34px,4vw,57px);line-height:.95;letter-spacing:-.065em;margin-bottom:18px}
+.details p{max-width:490px;color:#66635d;font-size:14px;line-height:1.9}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin:27px 0 34px}
+.tag{border:1px solid var(--line);padding:6px 9px;font:400 10px "DM Mono";background:#fff}
+.source{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:800;width:max-content;border-bottom:2px solid var(--orange);padding-bottom:5px}
+.source:hover{color:var(--orange)}
+.source .arrow{transition:.3s}.source:hover .arrow{transform:translate(4px,-4px)}
+.project-meta{display:flex;justify-content:space-between;align-items:center;margin-top:35px;color:#8b877f}
+
+/* SKILLS */
+.skills{background:var(--dark);color:#fff}
+.skills .section-desc{color:#92908a}
+.skill-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.14);border-left:1px solid rgba(255,255,255,.14)}
+.skill{min-height:220px;padding:27px;border-right:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.14);transition:.35s}
+.skill:hover{background:#20201d;transform:translateY(-5px)}
+.skill .num{color:#77756f}.skill h3{font-size:17px;margin:48px 0 10px}.skill p{color:#94918b;font-size:12px;line-height:1.8}
+
+/* PROCESS */
+.process{display:grid;grid-template-columns:.65fr 1.35fr;gap:80px}
+.process-list{border-top:1px solid var(--line)}
+.step{display:grid;grid-template-columns:70px 1fr;gap:20px;padding:25px 0;border-bottom:1px solid var(--line);transition:.25s}
+.step:hover{padding-left:10px;background:rgba(255,255,255,.18)}
+.step .num{color:var(--orange);font:500 11px "DM Mono"}
+.step h3{font-size:18px;margin-bottom:5px}.step p{color:var(--muted);font-size:13px;line-height:1.75}
+
+/* FEEDBACK */
+.feedback{background:#d9d3c8}
+.feedback-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.quote{background:var(--cream);border:1px solid var(--line);padding:30px;min-height:290px;display:flex;flex-direction:column;transition:.35s}
+.quote:hover{transform:rotate(-1deg) translateY(-6px);box-shadow:10px 12px 0 rgba(17,17,15,.08)}
+.stars{color:var(--orange);font-size:12px;letter-spacing:2px}
+.quote p{font-size:14px;line-height:1.85;margin:25px 0 auto;color:#46443f}
+.person{border-top:1px solid var(--line);padding-top:16px;margin-top:25px}
+.person strong{font-size:12px}.person span{display:block;color:#858078;font:400 9px "DM Mono";margin-top:3px}
+.sample{display:inline-block;color:#aaa49a;font:400 8px "DM Mono";text-transform:uppercase;letter-spacing:.12em;margin-top:9px}
+
+/* ABOUT + CONTACT */
+.about{display:grid;grid-template-columns:.7fr 1.3fr;gap:90px}
+.about-copy{max-width:650px;color:#5e5b55;font-size:15px;line-height:2}
+.about-copy p+p{margin-top:18px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:32px}
+.fact{border-top:2px solid var(--ink);padding-top:13px}.fact strong{font-size:30px;letter-spacing:-.05em}.fact span{display:block;color:#858078;font:400 9px "DM Mono";text-transform:uppercase}
+.contact-wrap{padding-top:0}
+.contact{background:var(--orange);padding:75px;position:relative;overflow:hidden}
+.contact:before{content:"LET'S BUILD";position:absolute;right:-25px;bottom:-35px;font-size:110px;font-weight:800;letter-spacing:-.09em;color:rgba(17,17,15,.1)}
+.contact h2{max-width:750px;position:relative}
+.contact p{max-width:530px;margin:22px 0 28px;color:#513025;font-size:14px;position:relative}
+.contact .btn{background:var(--ink);color:#fff;border-color:var(--ink);position:relative}
+footer{background:var(--ink);color:#85827a;padding:23px 0;font:400 9px "DM Mono"}
+footer .container{display:flex;justify-content:space-between}
+
+/* MOTION */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.show{opacity:1;transform:none}
+.hero .reveal:first-child{transition-delay:.08s}
+.hero .reveal:last-child{transition-delay:.2s}
+.cursor{
+  position:fixed;width:22px;height:22px;border:1px solid var(--orange);border-radius:50%;
+  pointer-events:none;z-index:1000;transform:translate(-50%,-50%);mix-blend-mode:multiply;
+  transition:width .2s,height .2s,background .2s;display:none
+}
+.cursor.big{width:55px;height:55px;background:rgba(255,90,54,.08)}
+.progress{position:fixed;top:0;left:0;width:0;height:3px;background:var(--orange);z-index:1001}
+@media (pointer:fine){.cursor{display:block}}
+@media(max-width:900px){
+  .hero-grid,.section-top,.process,.about{grid-template-columns:1fr}
+  .hero-note{border-left:0;border-top:1px solid var(--ink);padding:25px 0 0}
+  .project,.project:nth-child(even){grid-template-columns:1fr}
+  .project:nth-child(even) .media,.project:nth-child(even) .details{order:initial}
+  .media{min-height:390px}.details{padding:40px}.skill-grid{grid-template-columns:repeat(2,1fr)}
+  .feedback-grid{grid-template-columns:1fr}.section-top{gap:5px}
+}
+@media(max-width:650px){
+  .container{width:min(var(--max),calc(100% - 28px))}
+  .nav-links{display:none;position:absolute;top:68px;left:14px;right:14px;background:#111;border:1px solid #333;padding:8px;flex-direction:column;gap:0}
+  .nav-links.open{display:flex}.nav-links a{display:block;padding:12px}.nav-links .contact{text-align:center}
+  .menu{display:block}.hero{padding-top:125px}.hero-grid{gap:55px}h1{font-size:clamp(52px,16vw,78px)}
+  section{padding:82px 0}.project{min-height:auto}.media{min-height:270px;padding:12px}.details{padding:30px 22px}
+  .project-no{margin-bottom:30px}.skill-grid{grid-template-columns:1fr}.skill{min-height:auto}
+  .facts{grid-template-columns:1fr 1fr}.contact{padding:48px 25px}.contact:before{font-size:55px}
+  footer .container{display:block}footer p+p{margin-top:6px}
+}
+</style>
+</head>
+<body>
+<div class="progress"></div><div class="cursor"></div>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">anton<b>071</b></a>
+    <button class="menu" aria-label="Open menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">01 Home</a></li>
+      <li><a href="#projects">02 Work</a></li>
+      <li><a href="#skills">03 Skills</a></li>
+      <li><a href="#process">04 Process</a></li>
+      <li><a href="#feedback">05 Feedback</a></li>
+      <li><a class="contact" href="mailto:antoniomangapo01@gmail.com">Let's talk ↗</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="home">
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <div class="kicker mono"><i></i> Developer / Student / Builder</div>
+      <h1>Code that turns<br>ideas into <span>things.</span></h1>
+      <p class="hero-copy">I'm Antonio Mangampo. I build practical web and software projects with a focus on clean interfaces, useful functionality and learning by shipping.</p>
+      <div class="actions">
+        <a class="btn primary" href="#projects">See selected work ↘</a>
+        <a class="btn" href="https://github.com/anton071" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    <aside class="hero-note reveal">
+      <div class="mono">DEV / PROFILE_001</div>
+      <strong>02+</strong>
+      <p>Featured builds across web development and desktop software. This portfolio shows the work itself—not a collection of generic template sections.</p>
+      <div class="availability"><i></i> Currently learning & building</div>
+    </aside>
+  </div>
+</section>
+
+<div class="marquee"><div class="marquee-track">
+  <span>HTML <b>•</b> CSS <b>•</b> JavaScript <b>•</b> PHP <b>•</b> MySQL <b>•</b> C# <b>•</b> Git <b>•</b> GitHub <b>•</b> UI / UX <b>•</b></span>
+  <span>HTML <b>•</b> CSS <b>•</b> JavaScript <b>•</b> PHP <b>•</b> MySQL <b>•</b> C# <b>•</b> Git <b>•</b> GitHub <b>•</b> UI / UX <b>•</b></span>
+</div></div>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-top reveal">
+      <div class="label mono">01 / Selected work</div>
+      <div><h2>Not just screens.<br>Built systems.</h2><p class="section-desc">Two class projects that show different sides of my development work. Since these projects don't have a public live demo, the buttons below go straight to the source repositories.</p></div>
+    </div>
+
+    <div class="projects">
+      <article class="project reveal">
+        <div class="media"><img src="dejabrew.png" alt="Deja Brew administrator dashboard"></div>
+        <div class="details">
+          <div class="project-no mono">BUILD / 01 — WEB SYSTEM</div>
+          <h3>Deja Brew</h3>
+          <p>A café point-of-sale and management system with an administrator dashboard for sales, orders, menu items, inventory, users and reporting.</p>
+          <div class="tags"><span class="tag">PHP</span><span class="tag">JavaScript</span><span class="tag">CSS</span><span class="tag">MySQL</span><span class="tag">XAMPP</span></div>
+          <a class="source" href="https://github.com/anton071/deja_brew" target="_blank" rel="noopener">View source code <span class="arrow">↗</span></a>
+          <div class="project-meta mono"><span>Repository</span><span>01 / 02</span></div>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="media xo"><img src="XO1.png" alt="XO_GAME Windows Forms game"></div>
+        <div class="details">
+          <div class="project-no mono">BUILD / 02 — DESKTOP APP</div>
+          <h3>XO_GAME</h3>
+          <p>A C# Windows Forms Tic-Tac-Toe game with player-versus-computer gameplay, score tracking, restart controls and a custom visual interface.</p>
+          <div class="tags"><span class="tag">C#</span><span class="tag">Windows Forms</span><span class="tag">Game Logic</span><span class="tag">Desktop UI</span></div>
+          <a class="source" href="https://github.com/anton071/XO_GAME" target="_blank" rel="noopener">View source code <span class="arrow">↗</span></a>
+          <div class="project-meta mono"><span>Repository</span><span>02 / 02</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="skills">
+  <div class="container">
+    <div class="section-top reveal">
+      <div class="label mono">02 / Toolkit</div>
+      <div><h2>What I use<br>to make things.</h2><p class="section-desc">A practical toolkit rather than a long list of technologies I barely touch.</p></div>
+    </div>
+    <div class="skill-grid reveal">
+      <div class="skill"><span class="num mono">01</span><h3>Frontend</h3><p>HTML, CSS and JavaScript for responsive, interactive interfaces.</p></div>
+      <div class="skill"><span class="num mono">02</span><h3>Backend</h3><p>PHP, application logic and database-driven workflows.</p></div>
+      <div class="skill"><span class="num mono">03</span><h3>Desktop</h3><p>C# and Windows Forms for focused desktop software projects.</p></div>
+      <div class="skill"><span class="num mono">04</span><h3>Workflow</h3><p>Git, GitHub, debugging, iteration and practical problem solving.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="container process">
+    <div class="reveal"><div class="label mono">03 / Process</div><h2>How I approach a build.</h2><p class="section-desc">Simple process. Clear priorities. Build, test, improve.</p></div>
+    <div class="process-list reveal">
+      <div class="step"><span class="num">01</span><div><h3>Understand</h3><p>Break the requirement into features, users, screens and data.</p></div></div>
+      <div class="step"><span class="num">02</span><div><h3>Structure</h3><p>Plan the interface and application flow before writing everything at once.</p></div></div>
+      <div class="step"><span class="num">03</span><div><h3>Build</h3><p>Implement the core functionality, then shape the interface around it.</p></div></div>
+      <div class="step"><span class="num">04</span><div><h3>Refine</h3><p>Test interactions, fix rough edges and improve the experience.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="feedback" class="feedback">
+  <div class="container">
+    <div class="section-top reveal">
+      <div class="label mono">04 / Feedback</div>
+      <div><h2>Class-project<br>feedback.</h2><p class="section-desc">Sample names and comments are used here because this portfolio is being presented for a class project. Replace them with real feedback if you later collect testimonials.</p></div>
+    </div>
+    <div class="feedback-grid">
+      <article class="quote reveal"><div class="stars">⭐⭐⭐⭐⭐</div><p>“The Deja Brew dashboard makes a lot of information feel organized. The navigation and overall layout are easy to follow.”</p><div class="person"><strong>Lloyd Stephen</strong><span>UI/UX Enthusiast</span></div><small class="sample">Class project sample</small></article>
+      <article class="quote reveal"><div class="stars">⭐⭐⭐⭐⭐</div><p>“I liked that the XO game wasn't just functional—the interface gives the project its own identity and makes it feel like a finished application.”</p><div class="person"><strong>Liyu Gay</strong><span>Scatter Veteran</span></div><small class="sample">Class project sample</small></article>
+      <article class="quote reveal"><div class="stars">⭐⭐⭐⭐⭐</div><p>“The portfolio shows different skills instead of repeating the same type of project. It gives a clear idea of what the developer can build.”</p><div class="person"><strong>Marc Bangus</strong><span>Software Enthusiast</span></div><small class="sample">Class project sample</small></article>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container about">
+    <div class="reveal"><div class="label mono">05 / About</div><h2>Learning by<br>building.</h2></div>
+    <div class="about-copy reveal">
+      <p>I'm a developer who enjoys turning ideas into working digital experiences. I care about understandable code, useful features and interfaces that are straightforward to use.</p>
+      <p>My portfolio is still growing. Every project is an opportunity to learn another technique, solve a different problem and make the next build better.</p>
+      <div class="facts">
+        <div class="fact"><strong>02+</strong><span>Featured builds</span></div>
+        <div class="fact"><strong>04</strong><span>Core skill areas</span></div>
+        <div class="fact"><strong>∞</strong><span>Things to learn</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-wrap">
+  <div class="container">
+    <div class="contact reveal">
+      <div class="label mono">06 / Contact</div><h2>Have an idea?<br>Let's make it work.</h2>
+      <p>Open to opportunities, collaborations and interesting projects. You can also explore the source code behind my current work on GitHub.</p>
+      <a class="btn" href="mailto:antoniomangapo01@gmail.com">Start a conversation ↗</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="container"><p>© 2026 Antonio Mangampo — Built from scratch.</p><p>HTML / CSS / JavaScript</p></div></footer>
+
+<script>
+const menu=document.querySelector('.menu'), nav=document.querySelector('.nav-links');
+menu.addEventListener('click',()=>nav.classList.toggle('open'));
+
+const links=document.querySelectorAll('.nav-links a[href^="#"]');
+const sections=document.querySelectorAll('section[id]');
+function activeNav(){
+  let current='home';
+  sections.forEach(s=>{if(scrollY>=s.offsetTop-180)current=s.id});
+  links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
+}
+addEventListener('scroll',activeNav,{passive:true}); activeNav();
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');observer.unobserve(e.target)}})
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+const progress=document.querySelector('.progress');
+addEventListener('scroll',()=>{
+  const max=document.documentElement.scrollHeight-innerHeight;
+  progress.style.width=(scrollY/max*100)+'%';
+},{passive:true});
+
+const cursor=document.querySelector('.cursor');
+if(matchMedia('(pointer:fine)').matches){
+  addEventListener('mousemove',e=>{
+    cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';
+  });
+  document.querySelectorAll('a,.project,.skill,.quote').forEach(el=>{
+    el.addEventListener('mouseenter',()=>cursor.classList.add('big'));
+    el.addEventListener('mouseleave',()=>cursor.classList.remove('big'));
+  });
+}
+
+document.querySelectorAll('.project').forEach(card=>{
+  const image=card.querySelector('.media img');
+  card.addEventListener('mousemove',e=>{
+    if(innerWidth<901)return;
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    image.style.transform=`scale(1.045) translate(${x*8}px,${y*8}px)`;
+  });
+  card.addEventListener('mouseleave',()=>image.style.transform='');
+});
+</script>
+</body>
+</html>
