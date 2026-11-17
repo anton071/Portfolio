@@ -4,364 +4,499 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Antonio Mangampo — web and software developer portfolio.">
-<title>Antonio Mangampo — Developer / Builder</title>
+<title>Antonio Mangampo — Web Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;700;800&display=swap');
-
 :root{
-  --paper:#eeeae2; --ink:#11110f; --muted:#6f6d67; --orange:#ff5a36;
-  --cream:#f8f5ef; --dark:#151513; --line:rgba(17,17,15,.14);
-  --max:1220px; --ease:cubic-bezier(.2,.8,.2,1);
+  --bg:#050403; --bg2:#0d0907; --panel:rgba(255,255,255,.04); --line:rgba(255,255,255,.1);
+  --text:#f3efe9; --muted:#a39d94; --orange:#ff6a2b; --orange2:#f08a1c; --amber:#ffb020;
+  --ease:cubic-bezier(.2,.8,.2,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:Manrope,system-ui,sans-serif;line-height:1.55;overflow-x:hidden}
-body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:999;
-  opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,.logo{font-family:Poppins,Inter,sans-serif}
 a{color:inherit;text-decoration:none}
-.container{width:min(var(--max),calc(100% - 48px));margin:auto}
-.mono{font:500 10px/1.4 "DM Mono",monospace;text-transform:uppercase;letter-spacing:.14em}
-header{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0}
-.nav{
-  height:58px;border:1px solid rgba(255,255,255,.15);background:rgba(17,17,15,.92);
-  color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 17px 0 20px;
-  box-shadow:0 12px 35px rgba(0,0,0,.12);backdrop-filter:blur(16px)
-}
-.brand{font-weight:800;letter-spacing:-.04em}.brand b{color:var(--orange)}
-.nav-links{display:flex;align-items:center;gap:25px;list-style:none}
-.nav-links a{font-size:12px;color:#aaa;transition:.25s}.nav-links a:hover,.nav-links a.active{color:#fff}
-.nav-links .contact{color:#111;background:var(--orange);padding:9px 14px;font-weight:800}
-.menu{display:none;background:none;border:0;color:white;font-size:23px}
+button,input,textarea{font:inherit;color:inherit}
+.container{width:min(1100px,calc(100% - 48px));margin:auto}
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+main,header,footer{position:relative;z-index:1}
+
+/* NAV */
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(5,4,3,.72);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.05)}
+.nav{height:68px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:700;font-size:21px;color:var(--orange);letter-spacing:-.02em}
+.nav-links{display:flex;gap:34px;list-style:none}
+.nav-links a{font-size:14px;font-weight:500;position:relative;padding:6px 0;transition:color .25s}
+.nav-links a:after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav-links a:hover,.nav-links a.active{color:var(--orange)}
+.nav-links a.active:after,.nav-links a:hover:after{transform:scaleX(1)}
+.menu{display:none;background:none;border:0;font-size:26px;cursor:pointer}
+
+section{padding:110px 0;position:relative}
+.title{text-align:center;margin-bottom:64px}
+.title h2{font-size:clamp(30px,4vw,42px);font-weight:700;letter-spacing:-.02em}
+.title:after{content:"";display:block;width:64px;height:3px;background:var(--orange);margin:14px auto 0;border-radius:2px}
 
 /* HERO */
-.hero{min-height:100vh;padding:150px 0 80px;display:flex;align-items:center;border-bottom:1px solid var(--line)}
-.hero-grid{display:grid;grid-template-columns:1.45fr .55fr;gap:60px;align-items:end}
-.kicker{display:flex;align-items:center;gap:9px;color:var(--orange);margin-bottom:25px}
-.kicker i{width:7px;height:7px;border-radius:50%;background:var(--orange);box-shadow:0 0 15px rgba(255,90,54,.6)}
-h1{font-size:clamp(58px,9vw,124px);line-height:.87;letter-spacing:-.085em;font-weight:800;max-width:1000px}
-h1 span{display:block;color:var(--orange);font-style:italic}
-.hero-copy{max-width:620px;margin-top:31px;color:#585650;font-size:16px;line-height:1.9}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
-.btn{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--ink);padding:12px 17px;font-size:12px;font-weight:800;transition:.3s var(--ease)}
-.btn.primary{background:var(--ink);color:#fff}.btn:hover{transform:translateY(-4px);box-shadow:7px 7px 0 var(--orange)}
-.hero-note{border-left:1px solid var(--ink);padding-left:25px}
-.hero-note .mono{color:#77736b}
-.hero-note strong{display:block;font-size:42px;letter-spacing:-.06em;line-height:1;margin:14px 0}
-.hero-note p{font-size:12px;color:var(--muted);line-height:1.8}
-.availability{display:flex;align-items:center;gap:8px;margin-top:25px;font-size:11px;font-weight:700}
-.availability i{width:8px;height:8px;border-radius:50%;background:#39a96b;box-shadow:0 0 0 5px rgba(57,169,107,.12)}
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 70px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.hero h1{font-size:clamp(38px,5.4vw,64px);line-height:1.12;font-weight:800;letter-spacing:-.03em}
+.hero h1 span{color:var(--orange)}
+.role{margin:16px 0 22px;color:var(--orange);font-family:Poppins;font-weight:600;font-size:clamp(17px,2vw,21px);min-height:1.5em}
+.role .caret{display:inline-block;width:2px;height:1em;background:var(--orange);margin-left:3px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero p{color:#c9c3ba;max-width:520px;font-size:15px;line-height:1.85}
+.actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 24px;border-radius:6px;font-size:14px;font-weight:600;border:1.5px solid var(--orange);transition:.3s var(--ease);cursor:pointer;background:none}
+.btn.fill{background:linear-gradient(90deg,var(--orange),var(--orange2));border-color:transparent;color:#fff}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(255,106,43,.28)}
+.btn.line:hover{background:rgba(255,106,43,.1)}
+.stats{display:flex;gap:44px;margin-top:44px}
+.stat strong{display:block;font-family:Poppins;font-size:28px;color:var(--orange);line-height:1.1}
+.stat span{font-size:12px;color:var(--muted)}
 
-/* MARQUEE */
-.marquee{background:var(--ink);color:#fff;overflow:hidden;border-bottom:1px solid var(--ink)}
-.marquee-track{width:max-content;display:flex;animation:marquee 24s linear infinite}
-.marquee span{font:500 12px "DM Mono",monospace;text-transform:uppercase;letter-spacing:.16em;padding:19px 28px;white-space:nowrap}
-.marquee b{color:var(--orange);font-weight:500}
-@keyframes marquee{to{transform:translateX(-50%)}}
+.portrait{position:relative;justify-self:center;width:min(100%,330px);aspect-ratio:4/5;border-radius:22px;padding:2px;
+  background:linear-gradient(150deg,rgba(255,106,43,.9),rgba(255,106,43,.1) 40%,rgba(255,176,32,.6));
+  box-shadow:0 0 70px rgba(255,106,43,.22);animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px)}}
+.portrait .inner{position:relative;width:100%;height:100%;border-radius:20px;overflow:hidden;background:radial-gradient(circle at 30% 20%,#8d2e12,#2a0e06 70%)}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.portrait .initials{position:absolute;inset:0;display:grid;place-items:center;font:800 96px Poppins;color:rgba(255,255,255,.85);letter-spacing:-.05em}
+.badge{position:absolute;left:16px;right:16px;bottom:16px;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:rgba(10,8,6,.72);backdrop-filter:blur(10px);border:1px solid var(--line)}
+.badge .av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--amber));display:grid;place-items:center;font:700 12px Poppins;color:#1a0a03}
+.badge small{display:block;font-size:10px;color:var(--muted);line-height:1.3}
+.badge b{font-size:11px;display:block;line-height:1.3}
+.badge a{margin-left:auto;font-size:10px;font-weight:600;padding:6px 12px;background:rgba(255,255,255,.1);border-radius:6px;transition:.25s}
+.badge a:hover{background:var(--orange)}
 
-/* SECTIONS */
-section{padding:120px 0}
-.section-top{display:grid;grid-template-columns:.5fr 1.5fr;gap:30px;margin-bottom:55px}
-.label{color:var(--orange)}
-h2{font-size:clamp(38px,5.5vw,72px);line-height:.94;letter-spacing:-.065em}
-.section-desc{max-width:560px;color:var(--muted);font-size:14px;line-height:1.9;margin-top:18px}
-
-/* PROJECTS */
-.projects{display:grid;gap:26px}
-.project{
-  display:grid;grid-template-columns:1.12fr .88fr;min-height:550px;background:var(--cream);
-  border:1px solid var(--line);position:relative;overflow:hidden;transition:.5s var(--ease)
-}
-.project:nth-child(even){grid-template-columns:.88fr 1.12fr}
-.project:nth-child(even) .media{order:2}.project:nth-child(even) .details{order:1}
-.project:hover{transform:translateY(-8px);box-shadow:18px 24px 0 rgba(17,17,15,.1)}
-.media{position:relative;min-height:550px;padding:25px;background:#ddd8cf;overflow:hidden}
-.media:after{content:"VIEW / SOURCE";position:absolute;top:25px;right:25px;background:var(--orange);padding:8px 10px;font:500 9px "DM Mono";opacity:0;transform:translateY(-10px);transition:.4s}
-.project:hover .media:after{opacity:1;transform:none}
-.media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease);box-shadow:0 20px 45px rgba(0,0,0,.18)}
-.media.xo img{object-fit:contain;background:#0d0f43}
-.project:hover .media img{transform:scale(1.045)}
-.details{padding:55px;display:flex;flex-direction:column;justify-content:center}
-.project-no{color:#88847c;margin-bottom:50px}
-.details h3{font-size:clamp(34px,4vw,57px);line-height:.95;letter-spacing:-.065em;margin-bottom:18px}
-.details p{max-width:490px;color:#66635d;font-size:14px;line-height:1.9}
-.tags{display:flex;flex-wrap:wrap;gap:7px;margin:27px 0 34px}
-.tag{border:1px solid var(--line);padding:6px 9px;font:400 10px "DM Mono";background:#fff}
-.source{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:800;width:max-content;border-bottom:2px solid var(--orange);padding-bottom:5px}
-.source:hover{color:var(--orange)}
-.source .arrow{transition:.3s}.source:hover .arrow{transform:translate(4px,-4px)}
-.project-meta{display:flex;justify-content:space-between;align-items:center;margin-top:35px;color:#8b877f}
+/* ABOUT */
+.about{background:linear-gradient(180deg,transparent,rgba(255,106,43,.04),transparent)}
+.about-copy{max-width:760px;margin:auto;text-align:left;color:#c9c3ba;font-size:15px;line-height:1.9}
+.about-copy p+p{margin-top:18px}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:760px;margin:44px auto 0}
+.mini{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:26px 14px;text-align:center;transition:.35s var(--ease)}
+.mini:hover{transform:translateY(-6px);border-color:rgba(255,106,43,.5);box-shadow:0 14px 40px rgba(255,106,43,.12)}
+.mini strong{display:block;font:700 28px Poppins;color:var(--orange)}
+.mini span{font-size:12px;color:var(--muted)}
 
 /* SKILLS */
-.skills{background:var(--dark);color:#fff}
-.skills .section-desc{color:#92908a}
-.skill-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.14);border-left:1px solid rgba(255,255,255,.14)}
-.skill{min-height:220px;padding:27px;border-right:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.14);transition:.35s}
-.skill:hover{background:#20201d;transform:translateY(-5px)}
-.skill .num{color:#77756f}.skill h3{font-size:17px;margin:48px 0 10px}.skill p{color:#94918b;font-size:12px;line-height:1.8}
+.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:38px;max-width:900px;margin:auto;perspective:1000px}
+.skill{
+  position:relative;aspect-ratio:1/1.02;border-radius:34px;padding:28px 24px;display:flex;flex-direction:column;justify-content:flex-end;
+  background:linear-gradient(145deg,#b3501c,#d9801a 70%);overflow:hidden;
+  box-shadow:0 0 0 2px rgba(255,176,32,.55),0 18px 50px rgba(255,106,43,.28);
+  transform-style:preserve-3d;transition:transform .2s ease-out,box-shadow .3s;will-change:transform}
+.skill:before{content:"";position:absolute;top:-40%;right:-40%;width:110%;height:110%;border-radius:50%;background:radial-gradient(circle at 30% 70%,rgba(0,0,0,.28),rgba(0,0,0,0) 62%);pointer-events:none}
+.skill:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.28),transparent 45%);opacity:0;transition:opacity .3s;pointer-events:none}
+.skill:hover:after{opacity:1}
+.skill h3{font-size:15px;letter-spacing:.02em;text-transform:uppercase;margin-bottom:10px;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.35);position:relative}
+.skill p{font-size:12.5px;line-height:1.6;color:#fff3e6;position:relative}
+.skill .foot{display:flex;align-items:center;gap:6px;margin-top:14px;position:relative}
+.skill .ic{width:24px;height:24px;border-radius:50%;background:#fff6ec;color:#b3501c;font:700 9px Poppins;display:grid;place-items:center}
+.skill .more{margin-left:auto;font-size:11px;font-weight:600;color:#fff;background:none;border:0;cursor:pointer}
+.skill .extra{max-height:0;overflow:hidden;opacity:0;font-size:12px;color:#fff3e6;transition:max-height .5s var(--ease),opacity .4s,margin .4s;position:relative}
+.skill.open .extra{max-height:120px;opacity:1;margin-top:10px}
+.skill.open .more i{display:inline-block;transform:rotate(180deg)}
 
-/* PROCESS */
-.process{display:grid;grid-template-columns:.65fr 1.35fr;gap:80px}
-.process-list{border-top:1px solid var(--line)}
-.step{display:grid;grid-template-columns:70px 1fr;gap:20px;padding:25px 0;border-bottom:1px solid var(--line);transition:.25s}
-.step:hover{padding-left:10px;background:rgba(255,255,255,.18)}
-.step .num{color:var(--orange);font:500 11px "DM Mono"}
-.step h3{font-size:18px;margin-bottom:5px}.step p{color:var(--muted);font-size:13px;line-height:1.75}
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;max-width:960px;margin:auto}
+.flip{perspective:1200px;height:420px;cursor:pointer}
+.flip-in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .8s var(--ease)}
+.flip:hover .flip-in,.flip.on .flip-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#120d0a}
+.face.front .shot{position:absolute;inset:0 0 38% 0;background:radial-gradient(circle at 25% 25%,rgba(255,106,43,.55),transparent 40%),radial-gradient(circle at 55% 100%,rgba(255,176,32,.8),transparent 45%),#16100c}
+.face.front .shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.tagpill{position:absolute;top:14px;left:14px;z-index:2;font-size:11px;font-weight:600;color:var(--orange);background:rgba(10,8,6,.7);backdrop-filter:blur(6px);padding:4px 10px;border-radius:6px;border:1px solid rgba(255,106,43,.3)}
+.face.front .info{position:absolute;left:0;right:0;bottom:0;height:38%;padding:20px 22px;background:linear-gradient(180deg,rgba(18,13,10,.85),#120d0a);backdrop-filter:blur(8px)}
+.info h3{font-size:19px;margin-bottom:8px}
+.info p{font-size:12.5px;color:var(--muted);line-height:1.65}
+.face.back{transform:rotateY(180deg);padding:30px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-color:rgba(255,106,43,.6);box-shadow:0 0 40px rgba(255,106,43,.12) inset}
+.face.back h4{font:600 15px Poppins;color:var(--orange);margin-bottom:20px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:28px}
+.chip{font-size:12px;padding:8px 14px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid var(--line)}
+.proj-grid > :last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - 14px)}
+@media(max-width:860px){.proj-grid > :last-child:nth-child(odd){width:100%}}
+.wip{height:420px;border-radius:14px;border:1.5px dashed rgba(255,106,43,.45);background:linear-gradient(160deg,rgba(255,106,43,.07),rgba(255,255,255,.02));padding:34px 28px;display:flex;flex-direction:column;justify-content:center;text-align:center;transition:.35s var(--ease)}
+.wip:hover{transform:translateY(-6px);border-color:var(--orange);box-shadow:0 16px 44px rgba(255,106,43,.14)}
+.wip .tagpill{position:static;align-self:center;margin-bottom:22px}
+.wip h3{font-size:22px;margin-bottom:10px}
+.wip p{font-size:13px;color:var(--muted);max-width:340px;margin:0 auto}
+.wip .chips{margin:22px 0 22px}
+.bar{height:6px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden;max-width:260px;width:100%;margin:0 auto}
+.bar i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--orange),var(--amber));transition:width 1.6s var(--ease) .3s}
+.wip.show .bar i{width:var(--p)}
+.wip small{display:block;margin-top:8px;font-size:11px;color:var(--muted)}
 
 /* FEEDBACK */
-.feedback{background:#d9d3c8}
-.feedback-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.quote{background:var(--cream);border:1px solid var(--line);padding:30px;min-height:290px;display:flex;flex-direction:column;transition:.35s}
-.quote:hover{transform:rotate(-1deg) translateY(-6px);box-shadow:10px 12px 0 rgba(17,17,15,.08)}
-.stars{color:var(--orange);font-size:12px;letter-spacing:2px}
-.quote p{font-size:14px;line-height:1.85;margin:25px 0 auto;color:#46443f}
-.person{border-top:1px solid var(--line);padding-top:16px;margin-top:25px}
-.person strong{font-size:12px}.person span{display:block;color:#858078;font:400 9px "DM Mono";margin-top:3px}
-.sample{display:inline-block;color:#aaa49a;font:400 8px "DM Mono";text-transform:uppercase;letter-spacing:.12em;margin-top:9px}
+.fb-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;max-width:1000px;margin:auto}
+.quote{width:calc((100% - 40px)/3);min-height:240px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;transition:.35s var(--ease)}
+.quote:hover{transform:translateY(-6px);border-color:rgba(255,106,43,.5);box-shadow:0 16px 44px rgba(255,106,43,.12)}
+.stars{color:var(--amber);letter-spacing:3px;font-size:14px}
+.quote p{margin:18px 0 auto;font-size:14px;line-height:1.8;color:#d6d0c7}
+.who{display:flex;align-items:center;gap:12px;margin-top:22px;padding-top:16px;border-top:1px solid var(--line)}
+.who .av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--amber));display:grid;place-items:center;font:700 13px Poppins;color:#1a0a03}
+.who b{font-size:13px}
+@media(max-width:860px){.quote{width:calc((100% - 20px)/2)}}
+@media(max-width:600px){.quote{width:100%}}
+.hint{display:none;text-align:center;color:var(--muted);font-size:11px;margin-top:6px}
 
-/* ABOUT + CONTACT */
-.about{display:grid;grid-template-columns:.7fr 1.3fr;gap:90px}
-.about-copy{max-width:650px;color:#5e5b55;font-size:15px;line-height:2}
-.about-copy p+p{margin-top:18px}
-.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:32px}
-.fact{border-top:2px solid var(--ink);padding-top:13px}.fact strong{font-size:30px;letter-spacing:-.05em}.fact span{display:block;color:#858078;font:400 9px "DM Mono";text-transform:uppercase}
-.contact-wrap{padding-top:0}
-.contact{background:var(--orange);padding:75px;position:relative;overflow:hidden}
-.contact:before{content:"LET'S BUILD";position:absolute;right:-25px;bottom:-35px;font-size:110px;font-weight:800;letter-spacing:-.09em;color:rgba(17,17,15,.1)}
-.contact h2{max-width:750px;position:relative}
-.contact p{max-width:530px;margin:22px 0 28px;color:#513025;font-size:14px;position:relative}
-.contact .btn{background:var(--ink);color:#fff;border-color:var(--ink);position:relative}
-footer{background:var(--ink);color:#85827a;padding:23px 0;font:400 9px "DM Mono"}
-footer .container{display:flex;justify-content:space-between}
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;max-width:960px;margin:auto;align-items:start}
+.contact-grid p{color:#c9c3ba;font-size:15px;margin-bottom:26px}
+.row{display:flex;gap:14px;align-items:center;margin-bottom:16px;font-size:14px}
+.row i{font-style:normal;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,106,43,.14);color:var(--orange);font-size:14px}
+.socials{display:flex;gap:12px;margin-top:28px}
+.socials a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(255,106,43,.14);color:var(--orange);font:700 12px Poppins;transition:.3s var(--ease)}
+.socials a:hover{background:var(--orange);color:#fff;transform:translateY(-4px)}
+form{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;display:grid;gap:14px}
+input,textarea{width:100%;background:rgba(0,0,0,.45);border:1px solid var(--line);border-radius:6px;padding:13px 14px;font-size:14px;outline:none;transition:.25s}
+input:focus,textarea:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,106,43,.15)}
+textarea{min-height:120px;resize:vertical}
+form .btn{width:100%;padding:14px}
+footer{border-top:1px solid var(--line);text-align:center;padding:28px 0;font-size:13px;color:var(--muted);background:rgba(0,0,0,.4)}
 
 /* MOTION */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .reveal.show{opacity:1;transform:none}
-.hero .reveal:first-child{transition-delay:.08s}
-.hero .reveal:last-child{transition-delay:.2s}
-.cursor{
-  position:fixed;width:22px;height:22px;border:1px solid var(--orange);border-radius:50%;
-  pointer-events:none;z-index:1000;transform:translate(-50%,-50%);mix-blend-mode:multiply;
-  transition:width .2s,height .2s,background .2s;display:none
-}
-.cursor.big{width:55px;height:55px;background:rgba(255,90,54,.08)}
-.progress{position:fixed;top:0;left:0;width:0;height:3px;background:var(--orange);z-index:1001}
-@media (pointer:fine){.cursor{display:block}}
-@media(max-width:900px){
-  .hero-grid,.section-top,.process,.about{grid-template-columns:1fr}
-  .hero-note{border-left:0;border-top:1px solid var(--ink);padding:25px 0 0}
-  .project,.project:nth-child(even){grid-template-columns:1fr}
-  .project:nth-child(even) .media,.project:nth-child(even) .details{order:initial}
-  .media{min-height:390px}.details{padding:40px}.skill-grid{grid-template-columns:repeat(2,1fr)}
-  .feedback-grid{grid-template-columns:1fr}.section-top{gap:5px}
-}
-@media(max-width:650px){
-  .container{width:min(var(--max),calc(100% - 28px))}
-  .nav-links{display:none;position:absolute;top:68px;left:14px;right:14px;background:#111;border:1px solid #333;padding:8px;flex-direction:column;gap:0}
-  .nav-links.open{display:flex}.nav-links a{display:block;padding:12px}.nav-links .contact{text-align:center}
-  .menu{display:block}.hero{padding-top:125px}.hero-grid{gap:55px}h1{font-size:clamp(52px,16vw,78px)}
-  section{padding:82px 0}.project{min-height:auto}.media{min-height:270px;padding:12px}.details{padding:30px 22px}
-  .project-no{margin-bottom:30px}.skill-grid{grid-template-columns:1fr}.skill{min-height:auto}
-  .facts{grid-template-columns:1fr 1fr}.contact{padding:48px 25px}.contact:before{font-size:55px}
-  footer .container{display:block}footer p+p{margin-top:6px}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--orange),var(--amber));z-index:200}
+.cur-dot,.cur-ring{position:fixed;left:0;top:0;pointer-events:none;z-index:300;border-radius:50%;display:none}
+.cur-dot{width:8px;height:8px;background:var(--orange);box-shadow:0 0 14px var(--orange);margin:-4px 0 0 -4px}
+.cur-ring{width:34px;height:34px;margin:-17px 0 0 -17px;border:1.5px solid rgba(255,106,43,.7);transition:width .25s,height .25s,margin .25s,background .25s}
+.cur-ring.big{width:58px;height:58px;margin:-29px 0 0 -29px;background:rgba(255,106,43,.1)}
+@media (pointer:fine){.cur-dot,.cur-ring{display:block}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+@media(max-width:860px){
+  .hero-grid,.contact-grid{grid-template-columns:1fr}
+  .portrait{order:-1;width:min(76%,290px)}
+  .skill-grid{grid-template-columns:1fr;max-width:340px}
+  .skill{aspect-ratio:auto;min-height:250px}
+  .proj-grid{grid-template-columns:1fr}
+  .hint{display:block}
+  .menu{display:block}
+  .nav-links{position:absolute;top:68px;left:0;right:0;background:rgba(5,4,3,.97);flex-direction:column;gap:0;padding:8px 24px 16px;display:none;border-bottom:1px solid var(--line)}
+  .nav-links.open{display:flex}
+  .nav-links a{display:block;padding:12px 0}
+  section{padding:80px 0}
+  .stats{gap:30px}
 }
 </style>
 </head>
 <body>
-<div class="progress"></div><div class="cursor"></div>
+<div class="progress"></div><div class="cur-dot"></div><div class="cur-ring"></div>
+<canvas id="bg"></canvas>
 
 <header>
   <div class="container nav">
-    <a class="brand" href="#home">anton<b>071</b></a>
-    <button class="menu" aria-label="Open menu">☰</button>
+    <a class="logo" href="#home">Antonio.dev</a>
+    <button class="menu" aria-label="Toggle menu">☰</button>
     <ul class="nav-links">
-      <li><a href="#home" class="active">01 Home</a></li>
-      <li><a href="#projects">02 Work</a></li>
-      <li><a href="#skills">03 Skills</a></li>
-      <li><a href="#process">04 Process</a></li>
-      <li><a href="#feedback">05 Feedback</a></li>
-      <li><a class="contact" href="mailto:antoniomangapo01@gmail.com">Let's talk ↗</a></li>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#feedback">Feedback</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
 </header>
 
-<main id="home">
-<section class="hero">
+<main>
+<section id="home" class="hero">
   <div class="container hero-grid">
     <div class="reveal">
-      <div class="kicker mono"><i></i> Developer / Student / Builder</div>
-      <h1>Code that turns<br>ideas into <span>things.</span></h1>
-      <p class="hero-copy">I'm Antonio Mangampo. I build practical web and software projects with a focus on clean interfaces, useful functionality and learning by shipping.</p>
+      <h1>Hi, I'm <span>Antonio Mangampo</span></h1>
+      <div class="role"><span id="typed"></span><span class="caret"></span></div>
+      <p>I build practical web and software projects with clean interfaces, useful functionality and a habit of learning by shipping. I love turning ideas into working digital experiences.</p>
       <div class="actions">
-        <a class="btn primary" href="#projects">See selected work ↘</a>
-        <a class="btn" href="https://github.com/anton071" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn fill" href="#contact">Get In Touch</a>
+        <a class="btn line" href="#projects">View My Work</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong data-count="2" data-suffix="+">0</strong><span>Featured Builds</span></div>
+        <div class="stat"><strong data-count="6" data-suffix="+">0</strong><span>Technologies</span></div>
+        <div class="stat"><strong data-count="4" data-suffix="">0</strong><span>Skill Areas</span></div>
       </div>
     </div>
-    <aside class="hero-note reveal">
-      <div class="mono">DEV / PROFILE_001</div>
-      <strong>02+</strong>
-      <p>Featured builds across web development and desktop software. This portfolio shows the work itself—not a collection of generic template sections.</p>
-      <div class="availability"><i></i> Currently learning & building</div>
-    </aside>
+    <div class="portrait reveal d2">
+      <div class="inner">
+        <div class="initials">AM</div>
+        <!-- Your photo: photo.png next to this file -->
+        <img src="photo.png" alt="Antonio Mangampo" onerror="this.remove()">
+        <div class="badge">
+          <div class="av">A</div>
+          <div><b>@anton071</b><small>Currently learning &amp; building</small></div>
+          <a href="#contact">Hire Me</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="marquee"><div class="marquee-track">
-  <span>HTML <b>•</b> CSS <b>•</b> JavaScript <b>•</b> PHP <b>•</b> MySQL <b>•</b> C# <b>•</b> Git <b>•</b> GitHub <b>•</b> UI / UX <b>•</b></span>
-  <span>HTML <b>•</b> CSS <b>•</b> JavaScript <b>•</b> PHP <b>•</b> MySQL <b>•</b> C# <b>•</b> Git <b>•</b> GitHub <b>•</b> UI / UX <b>•</b></span>
-</div></div>
+<section id="about" class="about">
+  <div class="container">
+    <div class="title reveal"><h2>About Me</h2></div>
+    <div class="about-copy reveal">
+      <p>Hello! I'm Antonio, a developer who enjoys turning ideas into working digital experiences. I care about understandable code, useful features and interfaces that are straightforward to use.</p>
+      <p>From a PHP and MySQL café management system to a C# desktop game, I like exploring different sides of development. My portfolio is still growing — every project is a chance to learn a new technique and make the next build better.</p>
+    </div>
+    <div class="cards3">
+      <div class="mini reveal"><strong data-count="2" data-suffix="+">0</strong><span>Featured Builds</span></div>
+      <div class="mini reveal d1"><strong data-count="4" data-suffix="">0</strong><span>Core Skill Areas</span></div>
+      <div class="mini reveal d2"><strong>∞</strong><span>Things to Learn</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="title reveal"><h2>Skills &amp; Technologies</h2></div>
+    <div class="skill-grid">
+      <div class="skill reveal">
+        <h3>Frontend</h3>
+        <p>HTML, CSS, JavaScript — building responsive and interactive user interfaces.</p>
+        <div class="extra">Flexbox &amp; Grid layouts, animations, DOM scripting and mobile-first design.</div>
+        <div class="foot"><span class="ic">H</span><span class="ic">C</span><span class="ic">JS</span><button class="more">View more <i>⌄</i></button></div>
+      </div>
+      <div class="skill reveal d1">
+        <h3>Backend</h3>
+        <p>PHP, MySQL — server-side development and database-driven workflows.</p>
+        <div class="extra">Authentication, CRUD systems, relational schema design and reporting queries.</div>
+        <div class="foot"><span class="ic">P</span><span class="ic">My</span><span class="ic">DB</span><button class="more">View more <i>⌄</i></button></div>
+      </div>
+      <div class="skill reveal d2">
+        <h3>Desktop &amp; Tools</h3>
+        <p>C#, Windows Forms, Git, GitHub — focused desktop software and version control.</p>
+        <div class="extra">Game logic, custom UIs, debugging, branching and collaborative workflow.</div>
+        <div class="foot"><span class="ic">C#</span><span class="ic">Git</span><span class="ic">GH</span><button class="more">View more <i>⌄</i></button></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="projects">
   <div class="container">
-    <div class="section-top reveal">
-      <div class="label mono">01 / Selected work</div>
-      <div><h2>Not just screens.<br>Built systems.</h2><p class="section-desc">Two class projects that show different sides of my development work. Since these projects don't have a public live demo, the buttons below go straight to the source repositories.</p></div>
-    </div>
-
-    <div class="projects">
-      <article class="project reveal">
-        <div class="media"><img src="dejabrew.png" alt="Deja Brew administrator dashboard"></div>
-        <div class="details">
-          <div class="project-no mono">BUILD / 01 — WEB SYSTEM</div>
-          <h3>Deja Brew</h3>
-          <p>A café point-of-sale and management system with an administrator dashboard for sales, orders, menu items, inventory, users and reporting.</p>
-          <div class="tags"><span class="tag">PHP</span><span class="tag">JavaScript</span><span class="tag">CSS</span><span class="tag">MySQL</span><span class="tag">XAMPP</span></div>
-          <a class="source" href="https://github.com/anton071/deja_brew" target="_blank" rel="noopener">View source code <span class="arrow">↗</span></a>
-          <div class="project-meta mono"><span>Repository</span><span>01 / 02</span></div>
+    <div class="title reveal"><h2>Featured Projects</h2></div>
+    <div class="proj-grid">
+      <div class="flip reveal" tabindex="0">
+        <div class="flip-in">
+          <div class="face front">
+            <span class="tagpill">Full Stack</span>
+            <div class="shot"><img src="dejabrew.png" alt="Deja Brew administrator dashboard" onerror="this.remove()"></div>
+            <div class="info"><h3>Deja Brew</h3><p>A café point-of-sale and management system with an admin dashboard for sales, orders, inventory, users and reports.</p></div>
+          </div>
+          <div class="face back">
+            <h4>Technologies Used</h4>
+            <div class="chips"><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">JavaScript</span><span class="chip">CSS</span><span class="chip">XAMPP</span></div>
+            <a class="btn fill" href="https://github.com/anton071/deja_brew" target="_blank" rel="noopener">View Source ↗</a>
+          </div>
         </div>
-      </article>
-
-      <article class="project reveal">
-        <div class="media xo"><img src="XO1.png" alt="XO_GAME Windows Forms game"></div>
-        <div class="details">
-          <div class="project-no mono">BUILD / 02 — DESKTOP APP</div>
-          <h3>XO_GAME</h3>
-          <p>A C# Windows Forms Tic-Tac-Toe game with player-versus-computer gameplay, score tracking, restart controls and a custom visual interface.</p>
-          <div class="tags"><span class="tag">C#</span><span class="tag">Windows Forms</span><span class="tag">Game Logic</span><span class="tag">Desktop UI</span></div>
-          <a class="source" href="https://github.com/anton071/XO_GAME" target="_blank" rel="noopener">View source code <span class="arrow">↗</span></a>
-          <div class="project-meta mono"><span>Repository</span><span>02 / 02</span></div>
+      </div>
+      <div class="flip reveal d1" tabindex="0">
+        <div class="flip-in">
+          <div class="face front">
+            <span class="tagpill">Desktop App</span>
+            <div class="shot"><img src="XO1.png" alt="XO_GAME Windows Forms game" onerror="this.remove()" style="object-fit:contain;background:#0d0f43"></div>
+            <div class="info"><h3>XO_GAME</h3><p>A C# Windows Forms Tic-Tac-Toe with player-vs-computer play, score tracking, restart controls and a custom interface.</p></div>
+          </div>
+          <div class="face back">
+            <h4>Technologies Used</h4>
+            <div class="chips"><span class="chip">C#</span><span class="chip">Windows Forms</span><span class="chip">Game Logic</span><span class="chip">Desktop UI</span></div>
+            <a class="btn fill" href="https://github.com/anton071/XO_GAME" target="_blank" rel="noopener">View Source ↗</a>
+          </div>
         </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="skills" class="skills">
-  <div class="container">
-    <div class="section-top reveal">
-      <div class="label mono">02 / Toolkit</div>
-      <div><h2>What I use<br>to make things.</h2><p class="section-desc">A practical toolkit rather than a long list of technologies I barely touch.</p></div>
-    </div>
-    <div class="skill-grid reveal">
-      <div class="skill"><span class="num mono">01</span><h3>Frontend</h3><p>HTML, CSS and JavaScript for responsive, interactive interfaces.</p></div>
-      <div class="skill"><span class="num mono">02</span><h3>Backend</h3><p>PHP, application logic and database-driven workflows.</p></div>
-      <div class="skill"><span class="num mono">03</span><h3>Desktop</h3><p>C# and Windows Forms for focused desktop software projects.</p></div>
-      <div class="skill"><span class="num mono">04</span><h3>Workflow</h3><p>Git, GitHub, debugging, iteration and practical problem solving.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="process">
-  <div class="container process">
-    <div class="reveal"><div class="label mono">03 / Process</div><h2>How I approach a build.</h2><p class="section-desc">Simple process. Clear priorities. Build, test, improve.</p></div>
-    <div class="process-list reveal">
-      <div class="step"><span class="num">01</span><div><h3>Understand</h3><p>Break the requirement into features, users, screens and data.</p></div></div>
-      <div class="step"><span class="num">02</span><div><h3>Structure</h3><p>Plan the interface and application flow before writing everything at once.</p></div></div>
-      <div class="step"><span class="num">03</span><div><h3>Build</h3><p>Implement the core functionality, then shape the interface around it.</p></div></div>
-      <div class="step"><span class="num">04</span><div><h3>Refine</h3><p>Test interactions, fix rough edges and improve the experience.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="feedback" class="feedback">
-  <div class="container">
-    <div class="section-top reveal">
-      <div class="label mono">04 / Feedback</div>
-      <div><h2>Class-project<br>feedback.</h2><p class="section-desc">Sample names and comments are used here because this portfolio is being presented for a class project. Replace them with real feedback if you later collect testimonials.</p></div>
-    </div>
-    <div class="feedback-grid">
-      <article class="quote reveal"><div class="stars">⭐⭐⭐⭐⭐</div><p>“The Deja Brew dashboard makes a lot of information feel organized. The navigation and overall layout are easy to follow.”</p><div class="person"><strong>Lloyd Stephen</strong><span>UI/UX Enthusiast</span></div><small class="sample">Class project sample</small></article>
-      <article class="quote reveal"><div class="stars">⭐⭐⭐⭐⭐</div><p>“I liked that the XO game wasn't just functional—the interface gives the project its own identity and makes it feel like a finished application.”</p><div class="person"><strong>Liyu Gay</strong><span>Scatter Veteran</span></div><small class="sample">Class project sample</small></article>
-      <article class="quote reveal"><div class="stars">⭐⭐⭐⭐⭐</div><p>“The portfolio shows different skills instead of repeating the same type of project. It gives a clear idea of what the developer can build.”</p><div class="person"><strong>Marc Bangus</strong><span>Software Enthusiast</span></div><small class="sample">Class project sample</small></article>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="container about">
-    <div class="reveal"><div class="label mono">05 / About</div><h2>Learning by<br>building.</h2></div>
-    <div class="about-copy reveal">
-      <p>I'm a developer who enjoys turning ideas into working digital experiences. I care about understandable code, useful features and interfaces that are straightforward to use.</p>
-      <p>My portfolio is still growing. Every project is an opportunity to learn another technique, solve a different problem and make the next build better.</p>
-      <div class="facts">
-        <div class="fact"><strong>02+</strong><span>Featured builds</span></div>
-        <div class="fact"><strong>04</strong><span>Core skill areas</span></div>
-        <div class="fact"><strong>∞</strong><span>Things to learn</span></div>
+      </div>
+      <div class="flip reveal d2" tabindex="0">
+        <div class="flip-in">
+          <div class="face front">
+            <span class="tagpill">Game</span>
+            <div class="shot"><img src="chess.png" alt="Chess game" onerror="this.remove()"></div>
+            <div class="info"><h3>Chess</h3><p>A playable browser chess game, hosted live on GitHub Pages.</p></div>
+          </div>
+          <div class="face back">
+            <h4>Technologies Used</h4>
+            <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">GitHub Pages</span></div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+              <a class="btn fill" href="https://anton071.github.io/Chess/" target="_blank" rel="noopener">Live Demo ↗</a>
+              <a class="btn line" href="https://github.com/anton071/Chess" target="_blank" rel="noopener">Source ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wip reveal d1">
+        <span class="tagpill">In Progress</span>
+        <h3>GCash Clone</h3>
+        <p>A mobile wallet interface with send money, cash in and transaction history screens.</p>
+        <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div>
+        <div class="bar" style="--p:45%"><i></i></div><small>Building · 45%</small>
+      </div>
+      <div class="wip reveal d2">
+        <span class="tagpill">In Progress</span>
+        <h3>Instagram Clone</h3>
+        <p>A social feed with posts, likes, comments and profile pages.</p>
+        <div class="chips"><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">JavaScript</span></div>
+        <div class="bar" style="--p:25%"><i></i></div><small>Building · 25%</small>
       </div>
     </div>
+    <p class="hint">Tap a card to see its tech stack</p>
   </div>
 </section>
 
-<section class="contact-wrap">
+<section id="feedback">
   <div class="container">
-    <div class="contact reveal">
-      <div class="label mono">06 / Contact</div><h2>Have an idea?<br>Let's make it work.</h2>
-      <p>Open to opportunities, collaborations and interesting projects. You can also explore the source code behind my current work on GitHub.</p>
-      <a class="btn" href="mailto:antoniomangapo01@gmail.com">Start a conversation ↗</a>
+    <div class="title reveal"><h2>Feedback</h2></div>
+    <div class="fb-grid">
+      <article class="quote reveal"><div class="stars">★★★★★</div><p>“Clean design and smooth navigation. The projects are well-organized and easy to understand.”</p><div class="who"><span class="av">L</span><b>Lloyd Stephen</b></div></article>
+      <article class="quote reveal d1"><div class="stars">★★★★★</div><p>“I like the creativity and attention to detail. The applications look professional and work well.”</p><div class="who"><span class="av">L</span><b>Leyu Jay</b></div></article>
+      <article class="quote reveal d2"><div class="stars">★★★★★</div><p>“Impressive work! The portfolio showcases different skills and practical development experience.”</p><div class="who"><span class="av">M</span><b>Marc Eyrun</b></div></article>
+      <article class="quote reveal"><div class="stars">★★★★★</div><p>“The interface is simple but visually appealing. You can really see the effort put into each project.”</p><div class="who"><span class="av">T</span><b>Tgay</b></div></article>
+      <article class="quote reveal d1"><div class="stars">★★★★★</div><p>“Great projects with useful features. The overall presentation makes the developer's work stand out.”</p><div class="who"><span class="av">R</span><b>Runei</b></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="title reveal"><h2>Get In Touch</h2></div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <p>I'm always interested in new opportunities and exciting projects. Whether you have a question or just want to say hi, feel free to reach out!</p>
+        <div class="row"><i>✉</i><a href="mailto:antoniomangapo01@gmail.com">antoniomangapo01@gmail.com</a></div>
+        <div class="row"><i>⌥</i><a href="https://github.com/anton071" target="_blank" rel="noopener">github.com/anton071</a></div>
+        <div class="socials"><a href="https://github.com/anton071" target="_blank" rel="noopener" aria-label="GitHub">GH</a><a href="mailto:antoniomangapo01@gmail.com" aria-label="Email">@</a></div>
+      </div>
+      <form class="reveal d1" id="form">
+        <input name="name" placeholder="Your Name" required>
+        <input name="email" type="email" placeholder="Your Email" required>
+        <input name="subject" placeholder="Subject">
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button class="btn fill" type="submit">Send Message</button>
+      </form>
     </div>
   </div>
 </section>
 </main>
-
-<footer><div class="container"><p>© 2026 Antonio Mangampo — Built from scratch.</p><p>HTML / CSS / JavaScript</p></div></footer>
+<footer><div class="container">© 2026 Antonio Mangampo. All rights reserved.</div></footer>
 
 <script>
-const menu=document.querySelector('.menu'), nav=document.querySelector('.nav-links');
-menu.addEventListener('click',()=>nav.classList.toggle('open'));
+(function(){
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const fine=matchMedia('(pointer:fine)').matches, reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 
-const links=document.querySelectorAll('.nav-links a[href^="#"]');
-const sections=document.querySelectorAll('section[id]');
-function activeNav(){
-  let current='home';
-  sections.forEach(s=>{if(scrollY>=s.offsetTop-180)current=s.id});
-  links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
+/* mobile menu */
+const links=$('.nav-links'); $('.menu').onclick=()=>links.classList.toggle('open');
+$$('.nav-links a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+
+/* scroll progress + scroll-spy */
+const bar=$('.progress'), secs=$$('main section'), navA=$$('.nav-links a');
+function onScroll(){
+  const h=document.documentElement;
+  bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  let cur=secs[0].id;
+  secs.forEach(s=>{ if(s.getBoundingClientRect().top<innerHeight*.4) cur=s.id; });
+  navA.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
 }
-addEventListener('scroll',activeNav,{passive:true}); activeNav();
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
 
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');observer.unobserve(e.target)}})
-},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+/* reveal + counters */
+function count(el){
+  const to=+el.dataset.count, suf=el.dataset.suffix||''; let t0;
+  const step=t=>{t0=t0||t; const p=Math.min((t-t0)/1200,1); el.textContent=Math.round(to*(1-Math.pow(1-p,3)))+suf; if(p<1)requestAnimationFrame(step)};
+  requestAnimationFrame(step);
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  e.target.classList.add('show');
+  $$('[data-count]',e.target).forEach(count);
+  if(e.target.dataset.count!==undefined)count(e.target);
+  io.unobserve(e.target);
+}),{threshold:.15});
+$$('.reveal').forEach(el=>io.observe(el));
 
-const progress=document.querySelector('.progress');
-addEventListener('scroll',()=>{
-  const max=document.documentElement.scrollHeight-innerHeight;
-  progress.style.width=(scrollY/max*100)+'%';
-},{passive:true});
-
-const cursor=document.querySelector('.cursor');
-if(matchMedia('(pointer:fine)').matches){
-  addEventListener('mousemove',e=>{
-    cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';
-  });
-  document.querySelectorAll('a,.project,.skill,.quote').forEach(el=>{
-    el.addEventListener('mouseenter',()=>cursor.classList.add('big'));
-    el.addEventListener('mouseleave',()=>cursor.classList.remove('big'));
-  });
+/* typing role */
+const words=['Aspiring Web Developer','Software Builder','Lifelong Learner'], typed=$('#typed');
+if(reduce){typed.textContent=words[0]}else{
+  let w=0,c=0,del=false;
+  (function tick(){
+    const word=words[w];
+    typed.textContent=word.slice(0,c);
+    if(!del&&c===word.length){del=true;return setTimeout(tick,1600)}
+    if(del&&c===0){del=false;w=(w+1)%words.length}
+    c+=del?-1:1; setTimeout(tick,del?35:75);
+  })();
 }
 
-document.querySelectorAll('.project').forEach(card=>{
-  const image=card.querySelector('.media img');
-  card.addEventListener('mousemove',e=>{
-    if(innerWidth<901)return;
-    const r=card.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5;
-    const y=(e.clientY-r.top)/r.height-.5;
-    image.style.transform=`scale(1.045) translate(${x*8}px,${y*8}px)`;
-  });
-  card.addEventListener('mouseleave',()=>image.style.transform='');
+/* skill cards: 3D tilt + expand */
+$$('.skill').forEach(card=>{
+  if(fine&&!reduce){
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+      card.style.transform=`rotateY(${(x-.5)*22}deg) rotateX(${(.5-y)*22}deg) scale(1.04)`;
+      card.style.setProperty('--mx',x*100+'%'); card.style.setProperty('--my',y*100+'%');
+    });
+    card.addEventListener('mouseleave',()=>card.style.transform='');
+  }
+  $('.more',card).onclick=()=>card.classList.toggle('open');
 });
+
+/* project cards: tap to flip on touch */
+$$('.flip').forEach(f=>{
+  f.addEventListener('click',e=>{ if(!fine && !e.target.closest('a')) f.classList.toggle('on'); });
+  f.addEventListener('keydown',e=>{ if(e.key==='Enter') f.classList.toggle('on'); });
+});
+
+/* contact form -> opens mail client */
+$('#form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const d=new FormData(e.target);
+  const body=`${d.get('message')}\n\n— ${d.get('name')} (${d.get('email')})`;
+  location.href=`mailto:antoniomangapo01@gmail.com?subject=${encodeURIComponent(d.get('subject')||'Portfolio message')}&body=${encodeURIComponent(body)}`;
+});
+
+/* custom cursor */
+if(fine){
+  const dot=$('.cur-dot'), ring=$('.cur-ring'); let mx=-100,my=-100,rx=-100,ry=-100;
+  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.transform=`translate(${mx}px,${my}px)`});
+  (function loop(){rx+=(mx-rx)*.16;ry+=(my-ry)*.16;ring.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(loop)})();
+  document.addEventListener('mouseover',e=>ring.classList.toggle('big',!!e.target.closest('a,button,.skill,.flip,input,textarea')));
+}
+
+/* particle network background */
+const cv=$('#bg'), ctx=cv.getContext('2d'); let W,H,pts=[],mouse={x:null,y:null};
+function size(){
+  const dpr=Math.min(devicePixelRatio||1,2); W=innerWidth;H=innerHeight;
+  cv.width=W*dpr;cv.height=H*dpr;cv.style.width=W+'px';cv.style.height=H+'px';ctx.setTransform(dpr,0,0,dpr,0,0);
+  const n=Math.min(90,Math.floor(W*H/16000));
+  pts=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.6+.6}));
+}
+addEventListener('resize',size); size();
+addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
+addEventListener('mouseout',()=>{mouse.x=mouse.y=null});
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  for(const p of pts){
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0||p.x>W)p.vx*=-1; if(p.y<0||p.y>H)p.vy*=-1;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.283);ctx.fillStyle='rgba(255,120,60,.55)';ctx.fill();
+  }
+  for(let i=0;i<pts.length;i++){
+    for(let j=i+1;j<pts.length;j++){
+      const a=pts[i],b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+      if(d<140){ctx.strokeStyle=`rgba(255,106,43,${(1-d/140)*.22})`;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
+    }
+    if(mouse.x!==null){
+      const a=pts[i],d=Math.hypot(a.x-mouse.x,a.y-mouse.y);
+      if(d<180){ctx.strokeStyle=`rgba(255,176,32,${(1-d/180)*.45})`;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(mouse.x,mouse.y);ctx.stroke()}
+    }
+  }
+  if(!reduce)requestAnimationFrame(draw);
+}
+draw();
+})();
 </script>
 </body>
 </html>
