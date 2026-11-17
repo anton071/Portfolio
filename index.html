@@ -122,6 +122,7 @@ section{padding:110px 0;position:relative}
 .wip{height:420px;border-radius:14px;border:1.5px dashed rgba(255,106,43,.45);background:linear-gradient(160deg,rgba(255,106,43,.07),rgba(255,255,255,.02));padding:34px 28px;display:flex;flex-direction:column;justify-content:center;text-align:center;transition:.35s var(--ease)}
 .wip:hover{transform:translateY(-6px);border-color:var(--orange);box-shadow:0 16px 44px rgba(255,106,43,.14)}
 .wip .tagpill{position:static;align-self:center;margin-bottom:22px}
+.wip-ic{width:56px;height:56px;border-radius:14px;object-fit:cover;align-self:center;margin-bottom:16px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
 .wip h3{font-size:22px;margin-bottom:10px}
 .wip p{font-size:13px;color:var(--muted);max-width:340px;margin:0 auto}
 .wip .chips{margin:22px 0 22px}
@@ -224,7 +225,6 @@ footer{border-top:1px solid var(--line);text-align:center;padding:28px 0;font-si
     </div>
     <div class="portrait reveal d2">
       <div class="inner">
-        <div class="initials">AM</div>
         <!-- Your photo: photo.png next to this file -->
         <img src="photo.png" alt="Antonio Mangampo" onerror="this.remove()">
         <div class="badge">
@@ -314,7 +314,7 @@ footer{border-top:1px solid var(--line);text-align:center;padding:28px 0;font-si
         <div class="flip-in">
           <div class="face front">
             <span class="tagpill">Game</span>
-            <div class="shot"><img src="chess.png" alt="Chess game" onerror="this.remove()"></div>
+            <div class="shot"><img src="chess.jpg" alt="Chess game" onerror="this.remove()"></div>
             <div class="info"><h3>Chess</h3><p>A playable browser chess game, hosted live on GitHub Pages.</p></div>
           </div>
           <div class="face back">
@@ -329,6 +329,7 @@ footer{border-top:1px solid var(--line);text-align:center;padding:28px 0;font-si
       </div>
       <div class="wip reveal d1">
         <span class="tagpill">In Progress</span>
+        <img class="wip-ic" src="gcash.png" alt="" onerror="this.remove()">
         <h3>GCash Clone</h3>
         <p>A mobile wallet interface with send money, cash in and transaction history screens.</p>
         <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div>
@@ -336,6 +337,7 @@ footer{border-top:1px solid var(--line);text-align:center;padding:28px 0;font-si
       </div>
       <div class="wip reveal d2">
         <span class="tagpill">In Progress</span>
+        <img class="wip-ic" src="Instagram.jpeg" alt="" onerror="this.remove()">
         <h3>Instagram Clone</h3>
         <p>A social feed with posts, likes, comments and profile pages.</p>
         <div class="chips"><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">JavaScript</span></div>
